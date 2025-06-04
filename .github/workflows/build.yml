@@ -1,5 +1,3 @@
-name: Build
-on:
   workflow_dispatch:
       inputs:
         package_name:
@@ -21,7 +19,7 @@ jobs:
         sed -i 's/moduleDescription = "/moduleDescription = "(${{ github.event.inputs.package_name }}) /g' module.gradle
         sed -i "s/com.game.packagename/${{ github.event.inputs.package_name }}/g" module/src/main/cpp/game.h
         ./gradlew :module:assembleRelease
-    - uses: actions/upload-artifact@v3.1.2  # ✅ Correção aqui
+    - uses: actions/upload-artifact@dfb5ebfdf713b19a3feaf0d7dc68f8e4e7d6d62f  # ✅ Commit fixo
       with:
         name: zygisk-il2cppdumper
         path: out/magisk_module_release/
